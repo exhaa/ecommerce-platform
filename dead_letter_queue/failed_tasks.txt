@@ -1,0 +1,10 @@
+Time: 2026-09-13 15:42:11.542969
+Task: generate_invoice_pdf
+Arguments: [2002, 1, 3000]
+Error: TEST FAILURE - DLQ TEST
+--------------------------------------------------
+Time: 2026-09-13 23:24:37.981977
+Task: generate_invoice_pdf
+Arguments: [101, 1, 2500]
+Error: TEST FAILURE - DLQ TEST
+--------------------------------------------------

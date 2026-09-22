@@ -1,0 +1,47 @@
+services:
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ecommerce-api
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+      - rabbitmq
+    restart: unless-stopped
+
+  db:
+    image: postgres:17
+    container_name: ecommerce-db
+    environment:
+      POSTGRES_DB: ecommerce
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  redis:
+    image: redis:7
+    container_name: ecommerce-redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: ecommerce-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
