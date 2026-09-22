@@ -29,7 +29,11 @@ class Config:
     JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=7)
 
     # Database
-    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")
+    SQLALCHEMY_DATABASE_URI = os.getenv(
+        "DATABASE_URL",
+        "sqlite:///test.db"
+    )
+
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Redis
