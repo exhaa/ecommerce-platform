@@ -37,7 +37,14 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
           python -m pip show python-json-logger
+       
+      - name: Install pip-audit
+        run: python -m pip install pip-audit
+
+      - name: Run pip-audit
+        run: pip-audit -r requirements.txt
 
       - name: Run tests
         run: |
           python -m pytest -v
+
